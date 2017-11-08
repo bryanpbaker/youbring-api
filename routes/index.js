@@ -4,5 +4,5 @@ const authRoutes = require('./authRoutes');
 
 module.exports = (app) => {
   app.use('/auth', passport.initialize(), authRoutes);
-  app.get('/', testCtrl)
+  app.get('/', testCtrl);
 };

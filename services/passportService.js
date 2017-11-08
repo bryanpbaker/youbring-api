@@ -1,5 +1,6 @@
 const passport = require('passport');
 const FacebookTokenStrategy = require('passport-facebook-token');
+const LocalStrategy = require('passport-local');
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
@@ -10,24 +11,31 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
+  User.findById(id).then((user) => {
     done(null, user);
   });
 });
 
-passport.use(new FacebookTokenStrategy({
+passport.use(new FacebookTokenStrategy(
+  {
     clientID: keys.facebookAppID,
-    clientSecret: keys.facebookAppSecret
+    clientSecret: keys.facebookAppSecret,
+    profileFields: ['id', 'emails', 'name']
   },
   (accessToken, refreshToken, profile, done) => {
-    User.findOne({ facebookId: profile.id })
+    User.findOne({ userId: profile.id })
       .then((existingUser) => {
         if (existingUser) {
           done(null, existingUser);
         } else {
-          new User({ facebookId: profile.id }).save()
+          new User({
+            userId: profile.id,
+            first_name: profile.name.givenName,
+            last_name: profile.name.familyName,
+            email: profile.emails[0].value,
+          }).save()
             .then(user => done(null, user));
         }
-      })
-  }
+      });
+  },
 ));
