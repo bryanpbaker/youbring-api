@@ -28,3 +28,7 @@ module.exports.createUser = (newUser, callback) => {
     });
   });
 };
+
+module.exports.findUserByUserId = (userId) => {
+  User.findOne({ userId });
+};
