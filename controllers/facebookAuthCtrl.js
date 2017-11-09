@@ -2,12 +2,14 @@ const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 
 module.exports = (req, res) => {
+  // sign a token
   req.token = jwt.sign({
     id: req.user.userId,
   }, keys.jwtSecret, {
     expiresIn: 1000 * 60 * 60 * 48,
   });
 
+  // send the token and some user properties
   res.json({
     token: req.token,
     user: {

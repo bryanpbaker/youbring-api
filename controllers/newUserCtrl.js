@@ -4,6 +4,7 @@ const uniqid = require('uniqid');
 const User = require('../models/userModel');
 
 module.exports = (req, res) => {
+  // call the createUser model method with a new User
   User.createUser(new User({
     userId: uniqid(),
     first_name: '',
@@ -14,12 +15,14 @@ module.exports = (req, res) => {
     events: [],
   }))
     .then((user) => {
+      // if we are able to create a new User, sign a token...
       req.token = jwt.sign({
         id: user.userId,
       }, keys.jwtSecret, {
         expiresIn: 1000 * 60 * 60 * 48,
       });
 
+      // ...send the token and some user props
       res.json({
         token: req.token,
         user: {
@@ -32,7 +35,8 @@ module.exports = (req, res) => {
         },
       });
     })
-    .catch((error) => {
-      res.status(409).send(error.errmsg);
+    .catch((user) => {
+      // if there's already a user with that email, send a 409 and a message
+      res.status(409).send(`User with email ${user.email} already exists!`);
     });
 };
