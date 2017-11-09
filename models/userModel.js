@@ -57,16 +57,21 @@ User.createUser = async (newUser) => {
   const existingUser = await User.findOne({ email: newUser.email });
 
   if (existingUser) {
-    return existingUser;
+    // if the user already exists
+    return false;
   }
 
   if (newUser.password) {
+    // salt and hash password
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(newUser.password, salt);
 
+    // set user password to hashed password
     newUser.password = hash;
-
+    // save user
     newUser.save();
+    // return user
+    return newUser;
   }
 
 
