@@ -34,6 +34,6 @@ passport.use(new FacebookTokenStrategy(
       // Whether there was an existing user, or
       // one was created.. return the user
       .then(user => done(null, user))
-      .catch(user => done(user));
+      .catch(user => done(null, user));
   },
 ));

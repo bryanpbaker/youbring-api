@@ -30,7 +30,7 @@ module.exports = User;
  * @param  {User} newUser take a new User
  * @return {Promise}
  */
-module.exports.createUser = (newUser) => {
+User.createUser = (newUser) => {
   return new Promise((resolve, reject) => {
     User.findOne({ email: newUser.email })
       .then((existingUser) => {
