@@ -30,27 +30,66 @@ module.exports = User;
  * @param  {User} newUser take a new User
  * @return {Promise}
  */
-User.createUser = (newUser) => {
-  return new Promise((resolve, reject) => {
-    User.findOne({ email: newUser.email })
-      .then((existingUser) => {
-        if (existingUser) {
-          reject(existingUser);
-        } else {
-          if (newUser.password) {
-            bcrypt.genSalt(10, (err, salt) => {
-              bcrypt.hash(newUser.password, salt, (error, hash) => {
-                newUser.password = hash;
-                resolve(newUser.save());
-                reject(error);
-              });
-            });
-          }
+// User.createUser = (newUser) => {
+//   return new Promise((resolve, reject) => {
+//     User.findOne({ email: newUser.email })
+//       .then((existingUser) => {
+//         if (existingUser) {
+//           reject(existingUser);
+//         } else {
+//           if (newUser.password) {
+//             bcrypt.genSalt(10, (err, salt) => {
+//               bcrypt.hash(newUser.password, salt, (error, hash) => {
+//                 newUser.password = hash;
+//                 resolve(newUser.save());
+//                 reject(error);
+//               });
+//             });
+//           }
+//
+//           resolve(newUser.save());
+//         }
+//       });
+//   });
+// };
 
-          resolve(newUser.save());
-        }
-      });
-  });
+User.createUser = async (newUser) => {
+  const existingUser = await User.findOne({ email: newUser.email });
+
+  if (existingUser) {
+    return existingUser;
+  }
+
+  if (newUser.password) {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newUser.password, salt);
+
+    newUser.password = hash;
+
+    newUser.save();
+  }
+
+
+  // return new Promise((resolve, reject) => {
+  //   User.findOne({ email: newUser.email })
+  //     .then((existingUser) => {
+  //       if (existingUser) {
+  //         reject(existingUser);
+  //       } else {
+  //         if (newUser.password) {
+  //           bcrypt.genSalt(10, (err, salt) => {
+  //             bcrypt.hash(newUser.password, salt, (error, hash) => {
+  //               newUser.password = hash;
+  //               resolve(newUser.save());
+  //               reject(error);
+  //             });
+  //           });
+  //         }
+  //
+  //         resolve(newUser.save());
+  //       }
+  //     });
+  // });
 };
 
 User.findUserByEmail = async (email) => {
