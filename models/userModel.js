@@ -53,6 +53,8 @@ User.createUser = (newUser) => {
   });
 };
 
-module.exports.findUserByUserId = (userId) => {
-  User.findOne({ userId });
+User.findUserByEmail = async (email) => {
+  const user = await User.findOne({ email });
+
+  return user;
 };
