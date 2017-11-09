@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+const keys = require('../config/keys');
 const User = require('../models/userModel');
 
 module.exports = (req, res) => {
@@ -6,10 +8,24 @@ module.exports = (req, res) => {
     email: req.body.email,
     password: req.body.password,
   }))
-    .then((param1) => {
-      console.log('param1', param1);
+    .then((user) => {
+      req.token = jwt.sign({
+        id: user.userId,
+      }, keys.jwtSecret, {
+        expiresIn: 1000 * 60 * 60 * 48,
+      });
+
+      res.json({
+        token: req.token,
+        user: {
+          userId: user.userId,
+          email: user.email,
+          events: user.events,
+          contact: user.contacts,
+        },
+      });
     })
     .catch((error) => {
-      console.error('Could not create user!', error);
+      res.status(409).send(error.errmsg);
     });
 };
