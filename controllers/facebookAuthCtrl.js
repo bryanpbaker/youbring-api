@@ -8,5 +8,13 @@ module.exports = (req, res) => {
     expiresIn: 1000 * 60 * 60 * 48,
   });
 
-  res.json({ token: req.token, user: req.user });
+  res.json({
+    token: req.token,
+    user: {
+      userId: req.user.userId,
+      email: req.user.email,
+      events: req.user.events,
+      contact: req.user.contacts,
+    },
+  });
 };
