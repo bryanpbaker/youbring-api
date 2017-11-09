@@ -5,8 +5,11 @@ module.exports = (req, res) => {
     userId: 1,
     email: req.body.email,
     password: req.body.password,
-  }), (err, user) => {
-    console.error(err);
-    console.log('user', user);
-  });
+  }))
+    .then((param1) => {
+      console.log('param1', param1);
+    })
+    .catch((error) => {
+      console.error('Could not create user!', error);
+    });
 };

@@ -20,13 +20,16 @@ const userSchema = new Schema({
 const User = mongoose.model('users', userSchema);
 module.exports = User;
 
-module.exports.createUser = (newUser, callback) => {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
-      newUser.password = hash;
-      newUser.save(callback);
+module.exports.createUser = (newUser) => {
+  return new Promise((resolve, reject) => {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (error, hash) => {
+        newUser.password = hash;
+        resolve(newUser.save());
+        reject(error);
+      });
     });
-  });
+  })
 };
 
 module.exports.findUserByUserId = (userId) => {
