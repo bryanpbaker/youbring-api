@@ -6,8 +6,8 @@ const User = require('../models/userModel');
 module.exports = async (req, res) => {
   const user = await User.createUser(new User({
     userId: uniqid(),
-    first_name: '',
-    last_name: '',
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
     contacts: [],
@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
       },
     });
   } else {
-    console.log('naw');
+    res.status(409).send('User with this email already exists!');
   }
 
   // call the createUser model method with a new User
