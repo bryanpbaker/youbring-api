@@ -23,17 +23,18 @@ passport.use(new FacebookTokenStrategy(
     clientSecret: keys.facebookAppSecret,
     profileFields: ['id', 'emails', 'name'],
   },
-  (accessToken, refreshToken, profile, done) => {
+  async (accessToken, refreshToken, profile, done) => {
     // call createUser model method with new User
-    User.createUser(new User({
+    const user = await User.createUser(new User({
+      isSocialUser: true,
       userId: profile.id,
       first_name: profile.name.givenName,
       last_name: profile.name.familyName,
       email: profile.emails[0].value,
-    }))
-      // Whether there was an existing user, or
-      // one was created.. return the user
-      .then(user => done(null, user))
-      .catch(user => done(null, user));
+    }));
+
+    // Whether there was an existing user, or
+    // one was created.. return the user
+    done(null, user);
   },
 ));

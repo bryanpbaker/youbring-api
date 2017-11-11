@@ -5,6 +5,7 @@ const User = require('../models/userModel');
 
 module.exports = async (req, res) => {
   const user = await User.createUser(new User({
+    isSocialUser: false,
     userId: uniqid(),
     first_name: req.body.firstName,
     last_name: req.body.lastName,

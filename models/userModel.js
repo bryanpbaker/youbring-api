@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 
 // create user schema
 const userSchema = new Schema({
+  isSocialUser: Boolean,
   userId: String,
   first_name: String,
   last_name: String,
@@ -34,7 +35,12 @@ User.createUser = async (newUser) => {
   const existingUser = await User.findUserByEmail(newUser.email);
 
   if (existingUser) {
-    // if the user already exists
+    // if the user exists and is a social user
+    if (existingUser.isSocialUser) {
+      return existingUser;
+    }
+
+    // if the user already exists and is not a social user
     return false;
   }
 
@@ -50,6 +56,10 @@ User.createUser = async (newUser) => {
     // return user
     return newUser;
   }
+
+  newUser.save();
+
+  return newUser;
 };
 
 /**
