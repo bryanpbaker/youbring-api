@@ -73,3 +73,15 @@ User.findUserByEmail = async (email) => {
 
   return user;
 };
+
+/**
+ * findUserById takes an id and searches the
+ * db for a user with the given userId
+ * @param  {[type]}  email [description]
+ * @return {Promise}       [description]
+ */
+User.findUserById = async (userId) => {
+  const user = await User.findOne({ userId });
+
+  return user;
+};
