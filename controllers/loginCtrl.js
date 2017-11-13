@@ -15,6 +15,7 @@ module.exports = async (req, res) => {
       });
 
       res.json({
+        success: true,
         token: req.token,
         user: {
           userId: user.userId,

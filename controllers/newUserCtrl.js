@@ -25,6 +25,7 @@ module.exports = async (req, res) => {
 
     // ...send the token and some user props
     res.json({
+      success: true,
       token: req.token,
       user: {
         userId: user.userId,

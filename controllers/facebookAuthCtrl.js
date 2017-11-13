@@ -11,6 +11,7 @@ module.exports = (req, res) => {
 
   // send the token and some user properties
   res.json({
+    success: true,
     token: req.token,
     user: {
       userId: req.user.userId,
