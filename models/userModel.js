@@ -71,6 +71,10 @@ User.createUser = async (newUser) => {
 User.findUserByEmail = async (email) => {
   const user = await User.findOne({ email });
 
+  if (!user) {
+    return false;
+  }
+
   return user;
 };
 
@@ -82,6 +86,10 @@ User.findUserByEmail = async (email) => {
  */
 User.findUserById = async (userId) => {
   const user = await User.findOne({ userId });
+
+  if (!user) {
+    return false;
+  }
 
   return user;
 };

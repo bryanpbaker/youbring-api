@@ -1,9 +1,13 @@
 const express = require('express');
+const morgan = require('morgan');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// morgan
+app.use(morgan('tiny'));
 
 // bodyParser
 app.use(bodyParser.json());
