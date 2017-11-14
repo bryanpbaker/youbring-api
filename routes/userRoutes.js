@@ -8,7 +8,7 @@ const createContactCtrl = require('../controllers/users/createContactCtrl');
 const createEventCtrl = require('../controllers/users/createEventCtrl');
 
 // all /user routes are protected and require a jwt
-router.use('/', authGuard);
+router.use('/:id', authGuard);
 
 // get a user by id
 router.get('/:id', userCtrl);

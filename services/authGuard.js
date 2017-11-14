@@ -12,10 +12,12 @@ module.exports = async (req, res, next) => {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       }
 
-      // add decoded token to req
-      req.decodedToken = decoded;
-      // move on
-      next();
+      if (req.params.id === decoded.id) {
+        // add decoded token to req
+        req.decodedToken = decoded;
+        // move on
+        next();
+      }
     });
   } else {
     res.status(403).json({
