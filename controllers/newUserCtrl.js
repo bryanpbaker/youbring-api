@@ -4,6 +4,7 @@ const uniqid = require('uniqid');
 const User = require('../models/userModel');
 
 module.exports = async (req, res) => {
+  // create a user
   const user = await User.createUser(new User({
     isSocialUser: false,
     userId: uniqid(),
