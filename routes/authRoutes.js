@@ -1,8 +1,8 @@
 const express = require('express');
 const passport = require('passport');
-const facebookAuthCtrl = require('../controllers/facebookAuthCtrl');
-const newUserCtrl = require('../controllers/newUserCtrl');
-const loginCtrl = require('../controllers/loginCtrl');
+const facebookAuthCtrl = require('../controllers/auth/facebookAuthCtrl');
+const newUserCtrl = require('../controllers/auth/newUserCtrl');
+const loginCtrl = require('../controllers/auth/loginCtrl');
 
 const router = express.Router();
 

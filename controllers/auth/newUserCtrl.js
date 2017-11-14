@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+const keys = require('../../config/keys');
 const uniqid = require('uniqid');
-const User = require('../models/userModel');
+const User = require('../../models/userModel');
 
 module.exports = async (req, res) => {
   // create a user

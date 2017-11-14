@@ -3,6 +3,13 @@ const bcrypt = require('bcryptjs');
 
 const { Schema } = mongoose;
 
+// create contact sub document
+const contactSchema = new Schema({
+  name: String,
+  phone: Number,
+  email: String,
+});
+
 // create user schema
 const userSchema = new Schema({
   isSocialUser: Boolean,
@@ -15,7 +22,7 @@ const userSchema = new Schema({
     unique: true,
   },
   password: String,
-  contacts: [Object],
+  contacts: [contactSchema],
   events: [Object],
 });
 
