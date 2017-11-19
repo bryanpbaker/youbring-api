@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
 const uniqid = require('uniqid');
 const User = require('../../models/userModel');
 
@@ -20,7 +19,7 @@ module.exports = async (req, res) => {
     // if we are able to create a new User, sign a token...
     req.token = jwt.sign({
       id: user.userId,
-    }, keys.jwtSecret, {
+    }, process.env.JWT_SECRET, {
       expiresIn: 1000 * 60 * 60 * 48,
     });
 

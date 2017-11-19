@@ -1,7 +1,6 @@
 const passport = require('passport');
 const FacebookTokenStrategy = require('passport-facebook-token');
 const mongoose = require('mongoose');
-const keys = require('../config/keys');
 
 // User Model
 const User = mongoose.model('users');
@@ -19,8 +18,8 @@ passport.deserializeUser((id, done) => {
 // Create FacebookTokenStrategy
 passport.use(new FacebookTokenStrategy(
   {
-    clientID: keys.facebookAppID,
-    clientSecret: keys.facebookAppSecret,
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
     profileFields: ['id', 'emails', 'name'],
   },
   async (accessToken, refreshToken, profile, done) => {

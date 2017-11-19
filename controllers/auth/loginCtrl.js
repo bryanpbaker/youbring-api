@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/userModel');
-const keys = require('../../config/keys');
 
 module.exports = async (req, res) => {
   // await the the user from findUserByEmail
@@ -13,7 +12,7 @@ module.exports = async (req, res) => {
       req.token = jwt.sign({
         // sign a token with the user's id
         id: user.userId,
-      }, keys.jwtSecret, {
+      }, process.env.JWT_SECRET, {
         // expires in 48 hours
         expiresIn: 1000 * 60 * 60 * 48,
       });
