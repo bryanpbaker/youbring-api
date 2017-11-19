@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const passport = require('passport');
@@ -18,7 +19,7 @@ require('./models');
 require('./models/userModel');
 
 // Passport
-require('./services/passportService');
+require('./middleware/passportService');
 
 app.use(passport.initialize());
 app.use(passport.session());

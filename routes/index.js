@@ -1,4 +1,3 @@
-const passport = require('passport');
 const testCtrl = require('../controllers');
 const authRoutes = require('./authRoutes');
 const userRoutes = require('./userRoutes');

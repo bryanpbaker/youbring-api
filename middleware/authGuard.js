@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
 
 module.exports = async (req, res, next) => {
   // get the token from the authorization header
@@ -7,7 +6,7 @@ module.exports = async (req, res, next) => {
 
   if (token) {
     // verify the jwt
-    jwt.verify(token, keys.jwtSecret, (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       }

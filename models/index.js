@@ -2,4 +2,4 @@ const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(process.env.MONGO_URI);

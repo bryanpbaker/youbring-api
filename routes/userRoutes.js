@@ -1,11 +1,12 @@
 const express = require('express');
-const router = express.Router();
-const authGuard = require('../services/authGuard');
+const authGuard = require('../middleware/authGuard');
 const userCtrl = require('../controllers/users/userCtrl');
 const userContactCtrl = require('../controllers/users/userContactCtrl');
 const userEventsCtrl = require('../controllers/users/userEventsCtrl');
 const createContactCtrl = require('../controllers/users/createContactCtrl');
 const createEventCtrl = require('../controllers/users/createEventCtrl');
+
+const router = express.Router();
 
 // all /user routes are protected and require a jwt
 router.use('/:id', authGuard);
