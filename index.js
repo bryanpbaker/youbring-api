@@ -1,11 +1,15 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// cors
+app.use(cors())
 
 // morgan
 app.use(morgan('tiny'));
