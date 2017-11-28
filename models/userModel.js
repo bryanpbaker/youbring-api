@@ -65,12 +65,10 @@ User.createUser = async (newUser) => {
     // set user password to hashed password
     newUser.password = hash;
     // save user
-    newUser.save();
+    const newUserSaved = await newUser.save();
     // return user
-    return newUser;
+    return newUserSaved;
   }
-
-  newUser.save();
 
   return newUser;
 };
