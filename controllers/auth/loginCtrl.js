@@ -33,9 +33,15 @@ module.exports = async (req, res) => {
     }
 
     // if the password doesn't match, let them know
-    res.status(401).send('Incorrect password.');
+    res.status(401).json({
+      success: false,
+      message: 'Incorrect password',
+    });
   } else {
     // if no user is found, let them know
-    res.status(404).send('User not found!');
+    res.status(404).json({
+      success: false,
+      message: 'User not found!',
+    });
   }
 };

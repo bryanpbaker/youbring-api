@@ -37,6 +37,9 @@ module.exports = async (req, res) => {
       },
     });
   } else {
-    res.status(409).send('User with this email already exists!');
+    res.status(409).json({
+      success: false,
+      message: 'A user with this email address already exists!',
+    });
   }
 };
