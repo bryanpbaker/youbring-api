@@ -104,3 +104,10 @@ User.findUserById = async (userId) => {
 
   return user;
 };
+
+User.fetchSingleEvent = async (userId, eventId) => {
+  const user = await User.findOne({ userId });
+  const event = user.events.find(event => event.id === eventId);
+
+  return event;
+}

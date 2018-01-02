@@ -5,6 +5,7 @@ const userContactCtrl = require('../controllers/users/userContactCtrl');
 const userEventsCtrl = require('../controllers/users/userEventsCtrl');
 const createContactCtrl = require('../controllers/users/createContactCtrl');
 const createEventCtrl = require('../controllers/users/createEventCtrl');
+const singleEventCtrl = require('../controllers/events/singleEventCtrl');
 
 const router = express.Router();
 
@@ -25,5 +26,8 @@ router.get('/:id/events', userEventsCtrl);
 
 // create an event
 router.post('/:id/events/create', createEventCtrl);
+
+// get a single event
+router.get('/:id/events/:eventId', singleEventCtrl);
 
 module.exports = router;
