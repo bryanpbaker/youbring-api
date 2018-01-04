@@ -14,6 +14,7 @@ const contactSchema = new Schema({
 const eventSchema = new Schema({
   name: String,
   date: String,
+  description: String,
 });
 
 // create user schema
