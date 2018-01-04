@@ -8,7 +8,7 @@ You can either clone the repo down and run locally, or access the dev api on her
 
 The local URL is `http://localhost:5000`
 
-The dev/heroku URL is `https://github.com/bryanpbaker/youbring-api`
+The dev/heroku URL is `https://youbring-api.herokuapp.com`
 
 ### End Points
 
