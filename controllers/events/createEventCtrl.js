@@ -1,7 +1,7 @@
 const User = require('../../models/userModel');
 
 module.exports = async (req, res) => {
-  const user = await User.findUserById(req.params.id);
+  const user = await User.findUserById(req.decodedToken.id);
   const { newEvent } = req.body;
 
   if (user) {
