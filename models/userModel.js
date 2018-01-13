@@ -71,7 +71,9 @@ User.createUser = async (newUser) => {
     return newUserSaved;
   }
 
-  return newUser;
+  const newUserSaved = await newUser.save();
+
+  return newUserSaved;
 };
 
 /**
