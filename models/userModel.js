@@ -105,8 +105,7 @@ User.findUserByEmail = async (email) => {
 /**
  * findUserById takes an id and searches the
  * db for a user with the given userId
- * @param  {[type]}  email [description]
- * @return {Promise}       [description]
+ * @param  {String}  userId
  */
 User.findUserById = async (userId) => {
   const user = await User.findOne({ userId });
@@ -118,16 +117,38 @@ User.findUserById = async (userId) => {
   return user;
 };
 
+/**
+ * find a user from the db
+ * return the user's events
+ * @param {String} userId
+ * @returns {Array} events
+ */
 User.fetchEvents = async (userId) => {
   const user = await User.findOne({ userId });
-  const events = await user.events;
+  const { events } = user;
 
   return events;
 };
 
+/**
+ * return a single event
+ * from a user's events
+ * @param {String} userId 
+ * @param {String} eventId 
+ * @returns {Object} event
+ */
 User.fetchSingleEvent = async (userId, eventId) => {
   const user = await User.findOne({ userId });
   const event = user.events.find(event => event.id === eventId);
 
   return event;
+}
+
+User.fetchContacts = async (userId) => {
+  const user = await User.findOne({ userId });
+  const { contacts } = user;
+
+  console.log('contact', contacts);
+
+  return contacts;
 }
