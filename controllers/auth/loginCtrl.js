@@ -23,8 +23,8 @@ module.exports = async (req, res) => {
         token: req.token,
         user: {
           userId: user.userId,
-          first_name: user.first_name,
-          last_name: user.last_name,
+          firstName: user.firstName,
+          lastName: user.lastName,
           email: user.email,
           events: user.events,
           contact: user.contacts,

@@ -14,8 +14,8 @@ module.exports = (req, res) => {
     token: req.token,
     user: {
       userId: req.user.userId,
-      first_name: req.user.first_name,
-      last_name: req.user.last_name,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
       email: req.user.email,
       events: req.user.events,
       contact: req.user.contacts,

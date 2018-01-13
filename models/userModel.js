@@ -21,8 +21,8 @@ const eventSchema = new Schema({
 const userSchema = new Schema({
   isSocialUser: Boolean,
   userId: String,
-  first_name: String,
-  last_name: String,
+  firstName: String,
+  lastName: String,
   email: {
     type: String,
     lowercase: true,

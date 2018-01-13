@@ -27,8 +27,8 @@ passport.use(new FacebookTokenStrategy(
     const user = await User.createUser(new User({
       isSocialUser: true,
       userId: profile.id,
-      first_name: profile.name.givenName,
-      last_name: profile.name.familyName,
+      firstName: profile.name.givenName,
+      lastName: profile.name.familyName,
       email: profile.emails[0].value,
     }));
 
