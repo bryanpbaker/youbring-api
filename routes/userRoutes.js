@@ -4,16 +4,16 @@ const userCtrl = require('../controllers/users/userCtrl');
 const userContactCtrl = require('../controllers/users/userContactCtrl');
 const userEventsCtrl = require('../controllers/users/userEventsCtrl');
 const createContactCtrl = require('../controllers/users/createContactCtrl');
-const createEventCtrl = require('../controllers/users/createEventCtrl');
+const createEventCtrl = require('../controllers/events/createEventCtrl');
 const singleEventCtrl = require('../controllers/events/singleEventCtrl');
 
 const router = express.Router();
 
 // all /user routes are protected and require a jwt
-router.use('/:id', authGuard);
+router.use('/', authGuard);
 
 // get a user by id
-router.get('/:id', userCtrl);
+router.get('/', userCtrl);
 
 // get a user's contacts
 router.get('/:id/contacts', userContactCtrl);

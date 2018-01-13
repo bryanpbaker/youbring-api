@@ -5,16 +5,26 @@ const { Schema } = mongoose;
 
 // contact sub document
 const contactSchema = new Schema({
-  name: String,
+  firstName: String,
+  lastName: String,
   phone: Number,
   email: String,
+});
+
+// item sub document
+const itemSchema = new Schema({
+  name: String,
 });
 
 // event sub document
 const eventSchema = new Schema({
   name: String,
-  date: String,
+  date: Date,
   description: String,
+  location: String,
+  time: String,
+  invitees: [contactSchema],
+  items: [itemSchema],
 });
 
 // create user schema
@@ -106,6 +116,13 @@ User.findUserById = async (userId) => {
   }
 
   return user;
+};
+
+User.fetchEvents = async (userId) => {
+  const user = await User.findOne({ userId });
+  const events = await user.events;
+
+  return events;
 };
 
 User.fetchSingleEvent = async (userId, eventId) => {
