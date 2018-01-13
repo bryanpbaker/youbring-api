@@ -2,14 +2,14 @@ const User = require('../../models/userModel');
 
 module.exports = async (req, res) => {
   const user = await User.findUserById(req.decodedToken.id);
-  const { newEvent } = req.body;
+  const { newContact } = req.body;
 
   if (user) {
-    user.events.addToSet(newEvent);
+    user.contacts.addToSet(newContact);
     user.save();
     res.json({
       success: true,
-      events: user.events,
+      contacts: user.contacts,
     });
   } else {
     res.status(404).json({

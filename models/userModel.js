@@ -144,11 +144,13 @@ User.fetchSingleEvent = async (userId, eventId) => {
   return event;
 }
 
+/**
+ * return a list of the user's contacts
+ * @param {String} userId 
+ */
 User.fetchContacts = async (userId) => {
   const user = await User.findOne({ userId });
   const { contacts } = user;
 
-  console.log('contact', contacts);
-
   return contacts;
-}
+};

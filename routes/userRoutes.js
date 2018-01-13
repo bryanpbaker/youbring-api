@@ -1,7 +1,6 @@
 const express = require('express');
 const authGuard = require('../middleware/authGuard');
 const userCtrl = require('../controllers/users/userCtrl');
-const createContactCtrl = require('../controllers/users/createContactCtrl');
 
 const router = express.Router();
 
@@ -10,8 +9,5 @@ router.use('/', authGuard);
 
 // get a user by id
 router.get('/', userCtrl);
-
-// create a contact
-router.post('/:id/contacts/create', createContactCtrl);
 
 module.exports = router;

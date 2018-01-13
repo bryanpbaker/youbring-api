@@ -1,7 +1,7 @@
 const express = require('express');
 const authGuard = require('../middleware/authGuard');
-const eventsCtrl = require('../controllers/events/eventsCtrl');
 const contactsCtrl = require('../controllers/contacts/contactsCtrl');
+const createContactCtrl = require('../controllers/contacts/createContactCtrl');
 
 const router = express.Router();
 
@@ -11,5 +11,7 @@ router.use('/', authGuard);
 // get a user's contacts
 router.get('/', contactsCtrl);
 
+// create a contact
+router.post('/new', createContactCtrl);
 
 module.exports = router;
