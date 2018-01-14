@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
       lastName: user.lastName,
       email: user.email,
       events: user.events,
-      contact: user.contacts,
+      contacts: user.contacts,
     },
   });
 };
