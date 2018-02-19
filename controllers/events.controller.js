@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 /**
- * Events Index
+ * Index
  * gets all events for the current user
  * @param {Object} req the request object
  * @param {Object} res the response object
@@ -25,7 +25,7 @@ exports.index = async (req, res) => {
 };
 
 /**
- * Events Show
+ * Show
  * show a single event
  * @param {Object} req the request object
  * @param {Object} res the response object
@@ -52,7 +52,7 @@ exports.show = async (req, res) => {
 };
 
 /**
- * Create Event
+ * Create
  * create a new event with given params
  * @param {Object} req the request object
  * @param {Object} res the response object

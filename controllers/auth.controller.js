@@ -2,6 +2,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
+/**
+ * EMAIL AUTH
+ * authenticate a user with email and password
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ */
 exports.emailAuth = async (req, res) => {
   // await the the user from findUserByEmail
   const user = await User.findUserByEmail(req.body.email);
@@ -46,6 +52,12 @@ exports.emailAuth = async (req, res) => {
   }
 };
 
+/**
+ * FACEBOOK AUTH
+ * authenticate a user with facebook
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ */
 exports.facebookAuth = (req, res) => {
   // sign a token
   req.token = jwt.sign({
