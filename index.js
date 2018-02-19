@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Models
 require('./models');
-require('./models/userModel');
+require('./models/User');
 
 // Passport
 require('./middleware/passportService');

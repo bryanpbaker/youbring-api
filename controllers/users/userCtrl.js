@@ -1,5 +1,4 @@
-const jwt = require('jsonwebtoken');
-const User = require('../../models/userModel');
+const User = require('../../models/User');
 
 module.exports = async (req, res) => {
   // find the suer with the given id

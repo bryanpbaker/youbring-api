@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const User = require('../../models/userModel');
+const User = require('../../models/User');
 
 module.exports = async (req, res) => {
   // await the the user from findUserByEmail
