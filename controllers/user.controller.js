@@ -1,9 +1,16 @@
 const jwt = require('jsonwebtoken');
 const uniqid = require('uniqid');
-const User = require('../../models/User');
+const User = require('../models/User');
 
+/**
+ * Show
+ * get current user
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ */
 exports.show = async (req, res) => {
   // find the user with the given id
+  console.log(req.decodedToken.id)
   const user = await User.findUserById(req.decodedToken.id);
 
   // if there's no user, send a 404
@@ -29,7 +36,12 @@ exports.show = async (req, res) => {
   });
 };
 
-
+/**
+ * Create
+ * create a new user
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ */
 exports.create = async (req, res) => {
   // create a user
   const user = await User.createUser(new User({

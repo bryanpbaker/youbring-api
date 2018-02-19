@@ -1,27 +1,19 @@
 const express = require('express');
 const passport = require('passport');
-const facebookAuthCtrl = require('../controllers/auth/facebookAuthCtrl');
-const newUserCtrl = require('../controllers/auth/newUserCtrl');
-const loginCtrl = require('../controllers/auth/loginCtrl');
+const auth = require('../controllers/auth.controller')
 
 const router = express.Router();
-
-/**
- * CREATE
- * create a new user
- */
-router.post('/new-user', newUserCtrl);
 
 /**
  * EMAIL AUTH
  * sign in with email and password
 */
-router.post('/login', loginCtrl);
+router.post('/', auth.emailAuth);
 
 /**
  * FACEBOOK AUTH
  * sign in with facebook
  */
-router.post('/facebook', passport.authenticate('facebook-token'), facebookAuthCtrl);
+router.post('/facebook', passport.authenticate('facebook-token'), auth.facebookAuth);
 
 module.exports = router;

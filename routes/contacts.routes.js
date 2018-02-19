@@ -1,17 +1,22 @@
 const express = require('express');
 const authGuard = require('../middleware/authGuard');
-const contactsCtrl = require('../controllers/contacts/contactsCtrl');
-const createContactCtrl = require('../controllers/contacts/createContactCtrl');
+const contacts = require('../controllers/contacts.controller');
 
 const router = express.Router();
 
 // all /user routes are protected and require a jwt
 router.use('/', authGuard);
 
-// get a user's contacts
-router.get('/', contactsCtrl);
+/**
+ * INDEX
+ * get all contacts
+ */
+router.get('/', contacts.index);
 
-// create a contact
-router.post('/new', createContactCtrl);
+/**
+ * CREATE
+ * create new contact
+ */
+router.post('/new', contacts.create);
 
 module.exports = router;
