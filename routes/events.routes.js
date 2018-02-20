@@ -24,4 +24,16 @@ router.get('/:eventId', events.show);
  */
 router.post('/create', events.create);
 
+/**
+ * UPDATE
+ * update an event
+ */
+router.patch('/:eventId', events.update)
+
+/**
+ * DELETE
+ * delete an event
+ */
+router.delete('/:eventId', events.destroy)
+
 module.exports = router;
