@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors())
 
 // morgan
-app.use(morgan('tiny'));
+app.use(morgan(process.env.LOG_FORMAT));
 
 // bodyParser
 app.use(bodyParser.json());
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Models
 require('./models');
-require('./models/userModel');
+require('./models/User');
 
 // Passport
 require('./middleware/passportService');

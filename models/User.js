@@ -1,51 +1,11 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
-const { Schema } = mongoose;
-
-// contact sub document
-const contactSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  phone: Number,
-  email: String,
-});
-
-// item sub document
-const itemSchema = new Schema({
-  name: String,
-});
-
-// event sub document
-const eventSchema = new Schema({
-  name: String,
-  date: Date,
-  description: String,
-  location: String,
-  time: String,
-  invitees: [contactSchema],
-  items: [itemSchema],
-});
-
-// create user schema
-const userSchema = new Schema({
-  isSocialUser: Boolean,
-  userId: String,
-  firstName: String,
-  lastName: String,
-  email: {
-    type: String,
-    lowercase: true,
-    unique: true,
-  },
-  password: String,
-  contacts: [contactSchema],
-  events: [eventSchema],
-});
+const UserSchema = require('./schemas/user.schema');
 
 // make User available to other modules
-const User = mongoose.model('users', userSchema);
+const User = mongoose.model('users', UserSchema);
 module.exports = User;
+
 
 /**
  * createUser takes a new User, checks the db for duplicates based on email.
@@ -56,7 +16,7 @@ module.exports = User;
  * @return {User}
  */
 User.createUser = async (newUser) => {
-  const existingUser = await User.findUserByEmail(newUser.email);
+  const existingUser = await User.findOne({ email: newUser.email });
 
   if (existingUser) {
     // if the user exists and is a social user
@@ -86,37 +46,10 @@ User.createUser = async (newUser) => {
   return newUserSaved;
 };
 
-/**
- * findUserByEmail takes an email and searches the
- * db for a user with the given email address
- * @param  {[type]}  email [description]
- * @return {Promise}       [description]
- */
-User.findUserByEmail = async (email) => {
-  const user = await User.findOne({ email });
 
-  if (!user) {
-    return false;
-  }
-
-  return user;
-};
-
-/**
- * findUserById takes an id and searches the
- * db for a user with the given userId
- * @param  {String}  userId
- */
-User.findUserById = async (userId) => {
-  const user = await User.findOne({ userId });
-
-  if (!user) {
-    return false;
-  }
-
-  return user;
-};
-
+/*******************************************************
+ * Sub document actions
+ *******************************************************/
 /**
  * find a user from the db
  * return the user's events
