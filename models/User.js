@@ -1,47 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
-const { Schema } = mongoose;
-
-// contact sub document
-const ContactSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  phone: Number,
-  email: String,
-});
-
-// item sub document
-const ItemSchema = new Schema({
-  name: String,
-});
-
-// event sub document
-const EventSchema = new Schema({
-  name: String,
-  date: Date,
-  description: String,
-  location: String,
-  time: String,
-  invitees: [ContactSchema],
-  items: [ItemSchema],
-});
-
-// create user schema
-const UserSchema = new Schema({
-  isSocialUser: Boolean,
-  userId: String,
-  firstName: String,
-  lastName: String,
-  email: {
-    type: String,
-    lowercase: true,
-    unique: true,
-  },
-  password: String,
-  contacts: [ContactSchema],
-  events: [EventSchema],
-});
+const UserSchema = require('./schemas/user.schema');
 
 // make User available to other modules
 const User = mongoose.model('users', UserSchema);
