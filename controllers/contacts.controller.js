@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 /**
- * Index
+ * INDEX
  * get all contacts
  * @param {Object} req the request object
  * @param {Object} res the response object
@@ -25,13 +25,13 @@ exports.index = async (req, res) => {
 };
 
 /**
- * Create
+ * CREATE
  * create new user
  * @param {Object} req the request object
  * @param {Object} res the response object
  */
 exports.create = async (req, res) => {
-  const user = await User.findUserById(req.decodedToken.id);
+  const user = await User.findOne({ userId: req.decodedToken.id });
   const { newContact } = req.body;
 
   if (user) {

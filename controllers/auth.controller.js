@@ -9,8 +9,8 @@ const User = require('../models/User');
  * @param {Object} res the response object
  */
 exports.emailAuth = async (req, res) => {
-  // await the the user from findUserByEmail
-  const user = await User.findUserByEmail(req.body.email);
+  // await the the user
+  const user = await User.findOne({ email: req.body.email });
 
   if (user) {
     // compare the user's password to the hashed password from the db

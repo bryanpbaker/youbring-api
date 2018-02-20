@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 /**
- * Index
+ * INDEX
  * gets all events for the current user
  * @param {Object} req the request object
  * @param {Object} res the response object
@@ -25,7 +25,7 @@ exports.index = async (req, res) => {
 };
 
 /**
- * Show
+ * SHOW
  * show a single event
  * @param {Object} req the request object
  * @param {Object} res the response object
@@ -52,13 +52,13 @@ exports.show = async (req, res) => {
 };
 
 /**
- * Create
+ * CREATE
  * create a new event with given params
  * @param {Object} req the request object
  * @param {Object} res the response object
  */
 exports.create = async (req, res) => {
-  const user = await User.findUserById(req.decodedToken.id);
+  const user = await User.findOne({ userId: req.decodedToken.id });
   const { newEvent } = req.body;
 
   if (user) {
