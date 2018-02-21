@@ -17,31 +17,31 @@ The dev/heroku URL is `https://youbring-api.herokuapp.com`
 
 
 ##### Email Login - POST
-`/auth/login` - The body should be a JSON object with two properties, `email` and `password`
-
-
-##### Create New User - POST
-`/auth/new-user` - The body should be a JSON object with 4 properties (for now), `firstName` `lastName` `email` and `password`
+`/auth` - The body should be a JSON object with two properties, `email` and `password`
 
 
 ##### Fetch User - GET
-`/user/:id` - Pass in a user id. The headers should contain an `Authorization` header with a JWT
+`/user` - User id is decoded from Auth Token in `Authorization` header.
+
+
+##### Create New User - POST
+`/user/new` - The body should be a JSON object with 4 properties (for now), `firstName` `lastName` `email` and `password`
 
 
 ##### Fetch Contacts - GET
-`/user/:id/contacts` - Pass in a user id. The headers should contain an `Authorization` header with a JWT
-
-
-##### Fetch Events - GET
-`/user/:id/events` - Pass in a user id. The headers should contain an `Authorization` header with a JWT
+`/contacts` - The headers should contain an `Authorization` header with a JWT, the user's contacts will be searched by this
 
 
 ##### Create Contact - POST
-`/user/:id/contacts/create` - Pass in a user id, the body should contain a JSON object with a key of `newContact` and a value of another object, with 2 properties (for now), `name` and `phone` . The headers should contain an `Authorization` header with a JWT.
+`/contacts/create` - Pass in a user id, the body should contain a JSON object with a key of `newContact` and a value of another object, with 2 properties (for now), `name` and `phone` . The headers should contain an `Authorization` header with a JWT.
+
+
+##### Fetch Events - GET
+`/events` - The headers should contain an `Authorization` header with a JWT, the user's events will be searched by this
 
 
 ##### Create Event - POST
-`/user/:id/events/create` - Pass in a user id, the body should contain a JSON object with a key of `newEvent` and a value of another object, with 2 properties (for now), `name` and `date` . The headers should contain an `Authorization` header with a JWT.
+`/events/create` - Pass in a user id, the body should contain a JSON object with a key of `newEvent` and a value of another object, with 2 properties (for now), `name` and `date` . The headers should contain an `Authorization` header with a JWT.
 
 
 ### Prerequisites
