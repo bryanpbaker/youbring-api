@@ -1,0 +1,316 @@
+{
+	"info": {
+		"name": "YouBring",
+		"_postman_id": "efbc247b-4872-ab80-4818-fb63dcf538fd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Fetch User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0OTgwMDY5MjY5NDgxNDgiLCJpYXQiOjE1MTU4NzQ0NDcsImV4cCI6MTY4ODY3NDQ0N30.2xEIRW5vLb5a3YEPNAq0bFqP6O4FcAGNVpYppZtPF8w"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Todd\",\n\t\"lastName\": \"Shart\",\n\t\"email\": \"shart@gmail.com\",\n\t\"password\": \"test\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/user/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"new"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"qrbbaker@gmail.com\",\n  \"password\": \"Harley85\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/auth",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Facebook Auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/auth/facebook?access_token=EAAOZA2yjVsKwBAN0VIiNqVyQ1qy1lLE24rLk35mrQDbefjZAZArYXrwHwUeyF5AmBZCE54V52pgzPUBzopDQwNpgnKARvB0EXdjr7ZC9VQ0kFrTLdXoan0QaCXFGXz54kDZBo6KK88FyeDCBZAUoEZCRdZCdCV61R4yzyRHRMpOe0OOihzhjaonGNyiTu716jrH4QISE8z4kPZBwZDZD",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"facebook"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "EAAOZA2yjVsKwBAN0VIiNqVyQ1qy1lLE24rLk35mrQDbefjZAZArYXrwHwUeyF5AmBZCE54V52pgzPUBzopDQwNpgnKARvB0EXdjr7ZC9VQ0kFrTLdXoan0QaCXFGXz54kDZBo6KK88FyeDCBZAUoEZCRdZCdCV61R4yzyRHRMpOe0OOihzhjaonGNyiTu716jrH4QISE8z4kPZBwZDZD",
+									"equals": true
+								}
+							]
+						},
+						"description": "Makes a POST request to http://localhost:5000/auth/facebook with a Facebook access token and returns a JWT"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"description": "",
+			"item": [
+				{
+					"name": "Fetch Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsMzdnNHJlcGpjMTN3aTRjIiwiaWF0IjoxNTE1ODgxNTY4LCJleHAiOjE2ODg2ODE1Njh9.mhBB2-TzbSn8iR9cznjqjwbjXuJaqKZhYPfe5p9cEvU"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0OTgwMDY5MjY5NDgxNDgiLCJpYXQiOjE1MTU4NzQ0NDcsImV4cCI6MTY4ODY3NDQ0N30.2xEIRW5vLb5a3YEPNAq0bFqP6O4FcAGNVpYppZtPF8w"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"newEvent\": {\n\t\t\"name\": \"Go to bed!\",\n\t\t\"date\": \"Feb 19, 2018\",\n\t\t\"description\": \"Dallas, Tx\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/events/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"create"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsMzdnNHJlcGpjMTN3aTRjIiwiaWF0IjoxNTE1ODgxNTY4LCJleHAiOjE2ODg2ODE1Njh9.mhBB2-TzbSn8iR9cznjqjwbjXuJaqKZhYPfe5p9cEvU"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"updatedEvent\": {\n\t\t\"name\": \"Go to new york!\",\n\t\t\"date\": \"Feb 19, 2018\",\n\t\t\"description\": \"Dallas, Tx\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/events/5a4eb6add09daf8ac17a4742",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"5a4eb6add09daf8ac17a4742"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsMzdnNHJlcGpjMTN3aTRjIiwiaWF0IjoxNTE1ODgxNTY4LCJleHAiOjE2ODg2ODE1Njh9.mhBB2-TzbSn8iR9cznjqjwbjXuJaqKZhYPfe5p9cEvU"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/events/5a4eb6add09daf8ac17a4742",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"5a4eb6add09daf8ac17a4742"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contacts",
+			"description": "",
+			"item": [
+				{
+					"name": "Fetch Contacts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFsMzdnNHJlcGpjMTN3aTRjIiwiaWF0IjoxNTE1ODgxNTY4LCJleHAiOjE2ODg2ODE1Njh9.mhBB2-TzbSn8iR9cznjqjwbjXuJaqKZhYPfe5p9cEvU"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Contact",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0OTgwMDY5MjY5NDgxNDgiLCJpYXQiOjE1MTU5MDgzODIsImV4cCI6MTY4ODcwODM4Mn0.I1VJFKG3Xdv90aGkhylkMdRQ-WEToF3ScGhSc1vgyK4"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"newContact\": {\n\t\t\"firstName\": \"Ringo\",\n\t\t\"lastName\": \"Star\",\n\t\t\"phone\": 2134329233,\n\t\t\"email\": \"ringo@gmail.com\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contacts/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts",
+								"new"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
