@@ -43,6 +43,9 @@ The dev/heroku URL is `https://youbring-api.herokuapp.com`
 ##### Create Event - POST
 `/events/create` - Pass in a user id, the body should contain a JSON object with a key of `newEvent` and a value of another object, with 2 properties (for now), `name` and `date` . The headers should contain an `Authorization` header with a JWT.
 
+#### Postman Docs
+[Docs](https://documenter.getpostman.com/view/797918/youbring/RVg2AUM8)
+
 
 ### Prerequisites
 
