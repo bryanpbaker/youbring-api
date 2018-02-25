@@ -31,7 +31,6 @@ exports.index = async (req, res) => {
 exports.show = async (req, res) => {
   // use the fetchSingleEvent model method
   const event = await User.fetchSingleEvent(req.decodedToken.id, req.params.eventId);
-
   // if an event is found, return it
   if (event) {
     res.json({
@@ -63,7 +62,12 @@ exports.create = async (req, res) => {
     // add the event to the user's events
     user.events.addToSet(newEvent);
     // save the user
-    user.save(() => {
+    user.save((err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        return false;
+      }
+
       res.json({
         success: true,
         events: user.events,

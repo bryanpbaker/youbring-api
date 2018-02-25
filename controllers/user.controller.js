@@ -10,7 +10,6 @@ const User = require('../models/User');
  */
 exports.show = async (req, res) => {
   // find the user with the given id
-  console.log(req.decodedToken.id)
   const user = await User.findOne({ userId: req.decodedToken.id });
 
   // if there's no user, send a 404
